@@ -2,7 +2,11 @@ f1=open('file1.txt','r')
 f2=open('file2.txt','r')
 a,b=f1.read(),f2.read()
 def s(s):
-	s=s.lower().replace("."," ").replace(","," ")
+	s=s.lower()
+	c='abcdefghijklmnopqrstuvwxyz_0123456789'
+	for i in s:
+		if i not in c:
+			s=s.replace(i," ")
 	return s.split(" ")
 s1,s2=s(a),s(b)
 def freq(n):
