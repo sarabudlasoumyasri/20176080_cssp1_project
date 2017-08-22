@@ -1,6 +1,3 @@
-f1=open('file1.txt','r')
-f2=open('file2.txt','r')
-a,b=f1.read(),f2.read()
 def s(s):
 	s=s.lower()
 	c='abcdefghijklmnopqrstuvwxyz_0123456789'
@@ -8,7 +5,7 @@ def s(s):
 		if i not in c:
 			s=s.replace(i," ")
 	return s.split(" ")
-s1,s2=s(a),s(b)
+
 def freq(n):
 	d={}
 	for i in n:
@@ -17,21 +14,38 @@ def freq(n):
 		else:
 			d[i]=1
 	return d
-d1,d2=freq(s1),freq(s2)
-sum=0
-for i in d1:
-	if i in d2:
-		e=d1[i]*d2[i]
-		sum+=e
+
 def mathy(d):
 	x=0
 	for i in d:
 		x+=((d[i])**2)
 	return x
-ah=(mathy(d1)*mathy(d2))**(1/2)
-c=(sum/ah)*100
-print('The % is matching',c)
-	
+import glob
+i='C:/Users/hp/Desktop/project/bag/*.txt'
+l=glob.glob(i)
+le=len(l)
+#print(l)
+r=[]
+for i in range(le-1):
+	r.append([])
+	for j in range(le):
+		if i==j:
+			r[i].append(0)
+		else:
+			f1=open(l[i])
+			f2=open(l[j])
+			a,b=f1.read(),f2.read()
+			s1,s2=s(a),s(b)
+			d1,d2=freq(s1),freq(s2)
+			sum=0
+			for k in d1:
+				if k in d2:
+					e=d1[k]*d2[k]
+					sum+=e
+			ah=(mathy(d1)*mathy(d2))**(1/2)
+			c=round((sum/ah)*100,2)
+			r[i].append(c)
+print(r)
 
 
 
