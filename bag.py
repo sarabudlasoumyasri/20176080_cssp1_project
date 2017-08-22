@@ -26,7 +26,7 @@ l=glob.glob(i)
 le=len(l)
 #print(l)
 r=[]
-for i in range(le-1):
+for i in range(le):
 	r.append([])
 	for j in range(le):
 		if i==j:
