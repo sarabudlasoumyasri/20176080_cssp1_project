@@ -1,11 +1,10 @@
 def s(s):
-	s=s.lower()
-	c='abcdefghijklmnopqrstuvwxyz_0123456789'
 	for i in s:
-		if i not in c:
+		if (ord(i)<123 and ord(i)>96)or (ord(i)<58 and ord(i)>47) or i=='_':
+			s=s
+		else:
 			s=s.replace(i," ")
-	return s.split(" ")
-
+	return s			
 def freq(n):
 	d={}
 	for i in n:
@@ -24,7 +23,6 @@ import glob
 i='C:/Users/hp/Desktop/project/bag/*.txt'
 l=glob.glob(i)
 le=len(l)
-#print(l)
 r=[]
 for i in range(le):
 	r.append([])
@@ -34,8 +32,8 @@ for i in range(le):
 		else:
 			f1=open(l[i])
 			f2=open(l[j])
-			a,b=f1.read(),f2.read()
-			s1,s2=s(a),s(b)
+			a,b=f1.read().lower(),f2.read().lower()
+			s1,s2=s(a).split(),s(b).split()
 			d1,d2=freq(s1),freq(s2)
 			sum=0
 			for k in d1:
